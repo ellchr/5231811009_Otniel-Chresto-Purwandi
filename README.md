@@ -1,5 +1,6 @@
 Analisis Prediksi Atrisi Karyawan (Employee Attrition Prediction)
 
+
 Ikhtisar Proyek
 
 Proyek ini merupakan analisis komprehensif untuk memprediksi atrisi karyawan (employee attrition) menggunakan machine learning. Tujuan utamanya adalah untuk mengidentifikasi karyawan yang berisiko keluar (resign) sehingga departemen HR dapat mengambil tindakan preventif.
@@ -20,51 +21,36 @@ Muhammad Ibra Ramadan (5231811037)
 
 Program Studi Sains Data, Fakultas Sains & Teknologi, Universitas Teknologi Yogyakarta.
 
+
+
 Alur Kerja Proyek
 
 Skrip aplikasi ini mengeksekusi pipeline 14 tahap secara berurutan:
 
-Persiapan Data: Memuat pustaka dan dataset.
+1. Persiapan Data: Memuat pustaka dan dataset.
+2. Persiapan Target & EDA: Mendeteksi dan membersihkan kolom target (attrition). Melakukan Exploratory Data Analysis (EDA) dan menyimpan semua plot (distribusi, boxplot, heatmap) ke folder output/plots_eda.
+3. Data Quality Assessment: Memeriksa data duplikat, nilai yang hilang, dan outlier.
+4. Data Cleaning: Menghapus duplikat dan menangani outlier (capping).
+5. Feature Engineering: Membuat fitur baru (age_minus_tenure, maturity_satisfaction_interaction, loyalty_satisfaction_score) untuk meningkatkan performa model.
+6. Validasi Data: Memastikan dataset siap untuk diproses.
+7. Preprocessing Pipeline: Membangun ColumnTransformer untuk melakukan scaling pada data numerik dan One-Hot Encoding pada data kategorik.
+8. Definisi Fungsi Data Drift: Menyiapkan fungsi untuk PSI, KS-Test, dan Chi-Square.
+9. Train-Test Split & Drift Check: Membagi data dan memastikan tidak ada perbedaan distribusi yang signifikan antara data latih dan uji.
+10. Final Summary: Menghitung class weight (untuk model imbalanced) dan menyimpan semua artefak analisis (pipeline_summary.json, numeric_drift_report.csv, dll.) ke folder output.
+11. Pelatihan Model Baseline: Melatih dan membandingkan empat model (Logistic Regression, Random Forest, XGBoost, LightGBM) untuk menemukan model dengan Recall terbaik.
+12. Hyperparameter Tuning: Melakukan GridSearchCV pada model baseline terbaik (Logistic Regression) untuk menemukan parameter optimal.
+13. Evaluasi Model Final: Menguji model yang sudah di-tuning pada data test dan membandingkannya dengan model baseline.
+14. Prediksi Interaktif: Memilih model "juara" (dengan Recall tertinggi) dan meluncurkan loop interaktif yang meminta input pengguna untuk memprediksi atrisi karyawan secara real-time.
 
-Persiapan Target & EDA: Mendeteksi dan membersihkan kolom target (attrition). Melakukan Exploratory Data Analysis (EDA) dan menyimpan semua plot (distribusi, boxplot, heatmap) ke folder output/plots_eda.
-
-Data Quality Assessment: Memeriksa data duplikat, nilai yang hilang, dan outlier.
-
-Data Cleaning: Menghapus duplikat dan menangani outlier (capping).
-
-Feature Engineering: Membuat fitur baru (age_minus_tenure, maturity_satisfaction_interaction, loyalty_satisfaction_score) untuk meningkatkan performa model.
-
-Validasi Data: Memastikan dataset siap untuk diproses.
-
-Preprocessing Pipeline: Membangun ColumnTransformer untuk melakukan scaling pada data numerik dan One-Hot Encoding pada data kategorik.
-
-Definisi Fungsi Data Drift: Menyiapkan fungsi untuk PSI, KS-Test, dan Chi-Square.
-
-Train-Test Split & Drift Check: Membagi data dan memastikan tidak ada perbedaan distribusi yang signifikan antara data latih dan uji.
-
-Final Summary: Menghitung class weight (untuk model imbalanced) dan menyimpan semua artefak analisis (pipeline_summary.json, numeric_drift_report.csv, dll.) ke folder output.
-
-Pelatihan Model Baseline: Melatih dan membandingkan empat model (Logistic Regression, Random Forest, XGBoost, LightGBM) untuk menemukan model dengan Recall terbaik.
-
-Hyperparameter Tuning: Melakukan GridSearchCV pada model baseline terbaik (Logistic Regression) untuk menemukan parameter optimal.
-
-Evaluasi Model Final: Menguji model yang sudah di-tuning pada data test dan membandingkannya dengan model baseline.
-
-Prediksi Interaktif: Memilih model "juara" (dengan Recall tertinggi) dan meluncurkan loop interaktif yang meminta input pengguna untuk memprediksi atrisi karyawan secara real-time.
 
 Teknologi yang Digunakan
 
-Analisis Data: Python 3.9, Pandas, Numpy
-
-Visualisasi: Matplotlib, Seaborn
-
-Machine Learning: Scikit-learn, XGBoost, LightGBM
-
-Statistik: Scipy
-
-Deployment: Docker
-
-Lainnya: Tabulate
+- Analisis Data: Python 3.9, Pandas, Numpy
+- Visualisasi: Matplotlib, Seaborn
+- Machine Learning: Scikit-learn, XGBoost, LightGBM
+- Statistik: Scipy
+- Deployment: Docker
+- Lainnya: Tabulate
 
 Hasil Akhir dan Temuan
 
