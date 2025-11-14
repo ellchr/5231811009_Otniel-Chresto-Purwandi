@@ -1,6 +1,7 @@
 Analisis Prediksi Atrisi Karyawan (Employee Attrition Prediction)
 
 
+
 Ikhtisar Proyek
 
 Proyek ini merupakan analisis komprehensif untuk memprediksi atrisi karyawan (employee attrition) menggunakan machine learning. Tujuan utamanya adalah untuk mengidentifikasi karyawan yang berisiko keluar (resign) sehingga departemen HR dapat mengambil tindakan preventif.
@@ -55,30 +56,27 @@ Teknologi yang Digunakan
 Hasil Akhir dan Temuan
 
 Model Terbaik: Logistic Regression (Tuned)
-
 Metrik Fokus: Recall (untuk kelas 'Resign'), karena tujuan bisnis utamanya adalah mendeteksi sebanyak mungkin karyawan yang berpotensi resign, bahkan jika ada beberapa false positive.
-
 Parameter Terbaik: {'C': 0.1, 'penalty': 'l1', 'solver': 'saga'}
+
 
 Kinerja Model Final (pada Test Set):
 
 Recall (Resign): 0.6565 (Model berhasil mengidentifikasi 65,65% dari semua karyawan yang sebenarnya resign).
-
 ROC AUC Score: 0.7108
-
 Precision (Resign): 0.43
+
 
 Cara Menjalankan Aplikasi dengan Docker
 
-Aplikasi ini dirancang untuk berjalan di dalam kontainer Docker, sehingga Anda tidak perlu menginstal pustaka Python apa pun secara manual.
+- Aplikasi ini dirancang untuk berjalan di dalam kontainer Docker, sehingga Anda tidak perlu menginstal pustaka Python apa pun secara manual.
 
-Prasyarat
 
-Docker Desktop Terinstal: Pastikan Docker Desktop (atau Docker Engine di Linux) telah terinstal dan sedang berjalan.
+Prasyarat Docker
 
-Koneksi Internet: Diperlukan saat pertama kali menjalankan perintah untuk mengunduh image Docker.
-
-Struktur Folder: Buat struktur folder berikut di komputer Anda:
+- Docker Desktop Terinstal: Pastikan Docker Desktop (atau Docker Engine di Linux) telah terinstal dan sedang berjalan.
+- Koneksi Internet: Diperlukan saat pertama kali menjalankan perintah untuk mengunduh image Docker.
+- Struktur Folder: Buat struktur folder berikut di komputer Anda:
 
 folder_untuk_docker/
 ├── data/
@@ -86,22 +84,22 @@ folder_untuk_docker/
 └── output/
     (Folder ini awalnya kosong)
 
+- Dataset: Letakkan file dataset_clean_engineered (1).csv Anda di dalam folder data.
 
-Dataset: Letakkan file dataset_clean_engineered (1).csv Anda di dalam folder data.
 
 Langkah Eksekusi
 
-Buka Windows File Explorer.
+1. Buka Windows File Explorer.
 
-Masuk ke direktori folder_untuk_docker (folder yang baru saja Anda buat).
+2. Masuk ke direktori folder_untuk_docker (folder yang baru saja Anda buat).
 
-Klik pada bilah alamat (address bar) di bagian atas File Explorer, ketik cmd, lalu tekan Enter.
+3. Klik pada bilah alamat (address bar) di bagian atas File Explorer, ketik cmd, lalu tekan Enter.
 
-Jendela Command Prompt akan terbuka di lokasi yang benar.
+4. Jendela Command Prompt akan terbuka di lokasi yang benar.
 
-Salin dan jalankan perintah Docker di bawah ini:
+5. Salin dan jalankan perintah Docker di bawah ini:
 
-docker run --rm -it -v ./data:/app/data -v ./output:/app/output ellchr/employee-attrition-prediction-hr:v3
+6. docker run --rm -it -v ./data:/app/data -v ./output:/app/output ellchr/employee-attrition-prediction-hr:v3
 
 
 Penjelasan Perintah
@@ -118,18 +116,17 @@ docker run: Menjalankan sebuah image Docker.
 
 ellchr/employee-attrition-prediction-hr:v3: Nama image Docker yang akan diunduh dan dijalankan.
 
+
 Alur Eksekusi
 
-Setelah Anda menjalankan perintah di atas, skrip akan berjalan secara otomatis:
+1. Setelah Anda menjalankan perintah di atas, skrip akan berjalan secara otomatis:
 
-TAHAP 1-13 akan dieksekusi. Anda akan melihat log proses training dan tuning di terminal.
+2. TAHAP 1-13 akan dieksekusi. Anda akan melihat log proses training dan tuning di terminal.
 
-Semua file output (plot, CSV, JSON) akan disimpan ke folder output Anda.
+3. Semua file output (plot, CSV, JSON) akan disimpan ke folder output Anda.
 
-Di TAHAP 14, terminal akan menjadi interaktif dan meminta Anda memasukkan data karyawan untuk diprediksi.
+4. Di TAHAP 14, terminal akan menjadi interaktif dan meminta Anda memasukkan data karyawan untuk diprediksi.
 
-Setelah selesai, Anda dapat mengetik n untuk keluar dari aplikasi. Kontainer akan berhenti dan terhapus.
+5. Setelah selesai, Anda dapat mengetik n untuk keluar dari aplikasi. Kontainer akan berhenti dan terhapus.
 
-Lisensi
 
-Proyek ini dilisensikan di bawah MIT License.
